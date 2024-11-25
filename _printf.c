@@ -35,6 +35,13 @@ int _printf(const char *format, ...)
 				}
 				j++;
 			}
+			if (format_list[j].type == NULL)
+            {
+                _putchar('%');
+                _putchar(format[i + 1]);
+                count += 2;
+                i++;
+            }
 		}
 		else
 		{
@@ -45,4 +52,5 @@ int _printf(const char *format, ...)
 	}
 	va_end(list);
 	return (count);
+
 }

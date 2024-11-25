@@ -23,15 +23,6 @@ s	Characters from the array are written up to (but not included) a terminating n
 %	A '%' is written. No argument is converted. The complete conversion specification is '%%'.
 .SH RETURN VALUE
 The _printf function returns the total number of characters written (not including the final null character) if the operation was successful. If there is an error, it returns -1.
-.SH ATTRIBUTES
-.TS
-allbox,center,tab(|);
-cB|cB|cB
-cB|cB|cB
-l|l|l.
-Interface	| Attribute	| Value
-_printf()	| Thread Safety	| MT-Safe locale
-.TE
 .SH STANDARDS
 _printf()
 	C89, POSIX.1-2001.

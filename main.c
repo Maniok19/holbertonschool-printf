@@ -13,5 +13,9 @@ int main(void)
 	_printf("Hello, %d\n", 972);
 	_printf("Hello, %i\n", 972);
 	printf("Hello, %i\n", 972);
+	_printf("Hello, %d\n", -2147483648);
+	printf("Hello, %d\n", -2147483648);
+	printf("hello %r %r \n");
+	_printf("hello %r %r \n");
 	return (0);
 }

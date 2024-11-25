@@ -1,6 +1,7 @@
 #ifndef MAIN_H
 #define MAIN_H
 #include <stdarg.h>
+#include <unistd.h>
 /**
  * struct print - struct for printf
  * @type: type of data
