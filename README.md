@@ -26,10 +26,12 @@ int main(void)
     return (0);
 }
 ```
-
+## Flowchart
+![Flowchart of Printf](printfflowchart.png "Function Printf")
 
 ## Testing
 To test the ``_printf function``, create a separate test folder containing main files with various test cases. 
+Then use _printf() with your own arguments.
 
 ## Authors
 
