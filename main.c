@@ -9,5 +9,7 @@ int main(void)
 	_printf("Hello, %s\n", "Holberton");
 	printf("Hello, %c\n", 'H');
 	_printf("Hello, %c\n", 'H');
+	printf("Hello, %d\n", 972);
+	_printf("Hello, %d\n", 972);
 	return (0);
 }
