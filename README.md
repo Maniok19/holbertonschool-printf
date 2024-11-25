@@ -1,5 +1,13 @@
-Reproduce the printf function
-test  git
-tes2
-uyty
-test
+TITRE
+
+DESCRIPTION
+
+COMPILATION
+
+REQUIREMENTS
+
+EXEMPLES D'UTILISATION
+
+TEST
+
+AUTEURS
