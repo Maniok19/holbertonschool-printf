@@ -41,13 +41,29 @@ int print_percent(va_list list)
 	_putchar('%');
 	return (1);
 }
+/**
+ * print_int - function that prints an integer
+ * @list: list of arguments
+ * Return: number of characters printed
+ * Description: function that prints an integer
+ */
 int print_int(va_list list)
 {
 	int digit;
+	int min = -2147483648;
 	int count = 0;
 	int temp = 0;
 	int power = 1;
 
+	if (list == NULL)
+		return (0);
+	if (digit == min)
+	{
+		_putchar('-');
+		_putchar('2');
+		digit = 147483648;
+		count += 2;
+	}
 	digit = va_arg(list, int);
 	if (digit < 0)
 	{
