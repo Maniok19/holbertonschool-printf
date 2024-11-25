@@ -49,7 +49,7 @@ int print_percent(va_list list)
  */
 int print_int(va_list list)
 {
-	int digit;
+	int digit = 0;
 	int min = -2147483648;
 	int count = 0;
 	int temp = 0;
