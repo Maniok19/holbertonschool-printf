@@ -2,50 +2,6 @@
 #include <stdarg.h>
 #include <stdio.h>
 /**
- * _printf - function that produces output according to a format
- * @format: character string
- * Return: number of characters printed
- */
-int _printf(const char *format, ...)
-{
-	va_list list;
-	int i = 0, j = 0, count = 0;
-	char *str;
-	print_t format_list[] = {
-		{"c", print_char},
-		{"s", print_string},
-		{"%", print_percent},
-		{NULL, NULL}
-	};
-
-	va_start(list, format);
-	while (format && format[i])
-	{
-		if (format[i] == '%')
-		{
-			j = 0;
-			while (format_list[j].type)
-			{
-				if (format_list[j].type[0] == format[i + 1])
-				{
-					count += format_list[j].f(list);
-					i++;
-					break;
-				}
-				j++;
-			}
-		}
-		else
-		{
-			_putchar(format[i]);
-			count++;
-		}
-		i++;
-	}
-	va_end(list);
-	return (count);
-}
-/**
  * print_char - function that prints a character
  * @list: list of arguments
  * Return: number of characters printed
@@ -84,4 +40,48 @@ int print_percent(va_list list)
 	(void)list;
 	_putchar('%');
 	return (1);
+}
+
+/**
+ * _printf - function that produces output according to a format
+ * @format: character string
+ * Return: number of characters printed
+ */
+int _printf(const char *format, ...)
+{
+	va_list list;
+	int i = 0, j = 0, count = 0;
+	print_t format_list[] = {
+		{"c", print_char},
+		{"s", print_string},
+		{"%", print_percent},
+		{NULL, NULL}
+	};
+
+	va_start(list, format);
+	while (format && format[i])
+	{
+		if (format[i] == '%')
+		{
+			j = 0;
+			while (format_list[j].type)
+			{
+				if (format_list[j].type[0] == format[i + 1])
+				{
+					count += format_list[j].f(list);
+					i++;
+					break;
+				}
+				j++;
+			}
+		}
+		else
+		{
+			_putchar(format[i]);
+			count++;
+		}
+		i++;
+	}
+	va_end(list);
+	return (count);
 }
