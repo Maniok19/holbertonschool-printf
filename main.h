@@ -13,6 +13,19 @@ typedef struct print
 	char *type;
 	int (*f)(va_list);
 } print_t;
+/**
+ * struct flags - struct for flags
+ * @plus: plus flag
+ * @space: space flag
+ * @hash: hash flag
+ * Description: struct for flags
+ */
+typedef struct flags
+{
+	int plus;
+	int space;
+	int hash;
+} flags_t;
 
 int _printf(const char *format, ...);
 int _putchar(char c);
@@ -27,5 +40,6 @@ int print_hex(va_list list);
 int print_HEX(va_list list);
 void _flush_buffer(void);
 int print_Sstring(va_list list);
+int print_adress(va_list list);
 
 #endif

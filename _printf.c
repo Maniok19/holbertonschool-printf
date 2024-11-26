@@ -10,6 +10,7 @@ int _printf(const char *format, ...)
 {
 	va_list list;
 	int i = 0, j = 0, count = 0;
+	flags_t flags = {0, 0, 0};
 	print_t format_list[] = {
 		{"c", print_char},
 		{"s", print_string},
@@ -22,6 +23,7 @@ int _printf(const char *format, ...)
 		{"x", print_hex},
 		{"X", print_HEX},
 		{"S", print_Sstring},
+		{"p", print_adress},
 		{NULL, NULL}
 	};
 
