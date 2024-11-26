@@ -22,5 +22,8 @@ int print_percent(va_list list);
 int print_int(va_list list);
 int print_binary(va_list list);
 int print_unsigned(va_list list);
+int print_octal(va_list list);
+int print_hex(va_list list);
+int print_HEX(va_list list);
 
 #endif

@@ -30,3 +30,110 @@ int print_unsigned(va_list list)
 	}
 	return (count);
 }
+/**
+ * print_octal - function that prints an octal
+ * @list: list of arguments
+ * Return: number of characters printed
+ * Description: function that prints an octal
+ */
+int print_octal(va_list list)
+{
+	unsigned int num = va_arg(list, unsigned int);
+	int count = 0;
+	int result[32];
+	int i = 0;
+
+	if (num <= 0)
+	{
+		_putchar(num + '0');
+		count++;
+	}
+	else
+	{
+		while (num > 0)
+		{
+			result[i] = (num % 8);
+			num = num / 8;
+			i++;
+		}
+		for (i = i - 1; i >= 0; i--)
+		{
+			_putchar(result[i] + '0');
+			count++;
+		}
+	}
+	return (count);
+}
+/**
+ * print_hex - function that prints a hexadecimal
+ * @list: list of arguments
+ * Return: number of characters printed
+ * Description: function that prints a hexadecimal
+ */
+int print_hex(va_list list)
+{
+	unsigned int num = va_arg(list, unsigned int);
+	int count = 0;
+	int result[32];
+	int i = 0;
+
+	if (num <= 0)
+	{
+		_putchar(num + '0');
+		count++;
+	}
+	else
+	{
+		while (num > 0)
+		{
+			result[i] = (num % 16);
+			num = num / 16;
+			i++;
+		}
+		for (i = i - 1; i >= 0; i--)
+		{
+			if (result[i] < 10)
+				_putchar(result[i] + '0');
+			else
+				_putchar(result[i] - 10 + 'a');
+			count++;
+		}
+	}
+	return (count);
+}
+/**
+ * print_HEX - function that prints a hexadecimal
+ * @list: list of arguments
+ * Return: number of characters printed
+ */
+int print_HEX(va_list list)
+{
+	unsigned int num = va_arg(list, unsigned int);
+	int count = 0;
+	int result[32];
+	int i = 0;
+
+	if (num <= 0)
+	{
+		_putchar(num + '0');
+		count++;
+	}
+	else
+	{
+		while (num > 0)
+		{
+			result[i] = (num % 16);
+			num = num / 16;
+			i++;
+		}
+		for (i = i - 1; i >= 0; i--)
+		{
+			if (result[i] < 10)
+				_putchar(result[i] + '0');
+			else
+				_putchar(result[i] - 10 + 'A');
+			count++;
+		}
+	}
+	return (count);
+}
