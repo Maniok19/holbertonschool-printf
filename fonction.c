@@ -89,11 +89,26 @@ int print_binary(va_list list)
 {
 	unsigned int num = va_arg(list, unsigned int);
 	int count = 0;
-	while (num > 0)
+	int result[32];
+	int i = 0;
+	if (num <= 0)
 	{
-		_putchar(num % 2 + '0');
-		num = num / 2;
+		_putchar(num + '0');
 		count++;
+	}
+	else
+	{
+		while (num > 0)
+		{
+			result[i] = (num % 2);
+			num = num / 2;
+			i++;
+		}
+		for(i = i - 1; i >= 0; i--)
+		{
+			_putchar(result[i] + '0');
+			count++;
+		}
 	}
 	return (count);
 }
