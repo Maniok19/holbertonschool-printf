@@ -137,3 +137,36 @@ int print_HEX(va_list list)
 	}
 	return (count);
 }
+/**
+ * print_Sstring - function that prints a string
+ * @list: list of arguments
+ * Return: number of characters printed
+ */
+int print_Sstring(va_list list)
+{
+	char *str = va_arg(list, char *);
+	int count = 0;
+	int i = 0;
+
+	if (str == NULL)
+	{
+		str = "(null)";
+	}
+	while (str[i])
+	{
+		if ((str[i] > 0 && str[i] < 32) || str[i] >= 127)
+		{
+			_putchar('\\');
+			_putchar('x');
+			count += 2;
+			count += print_HEX(list);
+		}
+		else
+		{
+			_putchar(str[i]);
+			count++;
+		}
+		i++;
+	}
+	return (count);
+}

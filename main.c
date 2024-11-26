@@ -36,5 +36,9 @@ int main(void)
 	printf("Unknown:[%r]\n");
 	_printf("Binary:[%b]\n", 98);
 	printf("Binary:[%b]\n", 98);
+	printf("Binary:[%b]\n", 0);
+	_printf("Binary:[%b]\n", 0);
+	_printf("%S\n", "Holberton\nSchool");
+	printf("%S\n", "Holberton\nSchool");
 	return (0);
 }

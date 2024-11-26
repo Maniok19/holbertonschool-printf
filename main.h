@@ -26,5 +26,6 @@ int print_octal(va_list list);
 int print_hex(va_list list);
 int print_HEX(va_list list);
 void _flush_buffer(void);
+int print_Sstring(va_list list);
 
 #endif
