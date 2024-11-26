@@ -85,3 +85,15 @@ int print_int(va_list list)
 	}
 	return (count);
 }
+int print_binary(va_list list)
+{
+	unsigned int num = va_arg(list, unsigned int);
+	int count = 0;
+	while (num > 0)
+	{
+		_putchar(num % 2 + '0');
+		num = num / 2;
+		count++;
+	}
+	return (count);
+}
