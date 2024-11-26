@@ -85,6 +85,12 @@ int print_int(va_list list)
 	}
 	return (count);
 }
+/**
+ * print_binary - function that prints a binary
+ * @list: list of arguments
+ * Return: number of characters printed
+ * Description: function that prints a binary
+ */
 int print_binary(va_list list)
 {
 	unsigned int num = va_arg(list, unsigned int);
