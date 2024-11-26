@@ -7,8 +7,9 @@
  * Return: number of characters printed
  * Description: prints the adress of a variable
  */
-int print_adress(va_list list)
+int print_adress(va_list list, flags_t flags)
 {
+	(void)flags;
 	unsigned long int num = va_arg(list, unsigned long int);
 	int count = 0;
 	int result[32];

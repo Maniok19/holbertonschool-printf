@@ -6,12 +6,22 @@
  * @list: list of arguments
  * Return: number of characters printed
  */
-int print_unsigned(va_list list)
+int print_unsigned(va_list list, flags_t flags)
 {
 	unsigned int digit = va_arg(list, unsigned int);
 	unsigned int temp = 0;
 	unsigned int power = 1;
 	int count = 0;
+		if (digit >= 0 && flags.plus == 1)
+	{
+		_putchar('+');
+		count++;
+	}
+	if (digit >= 0 && flags.space == 1 && flags.plus == 0)
+	{
+		_putchar(' ');
+		count++;
+	}
 
 	if (list == NULL)
 		return (0);
@@ -36,8 +46,9 @@ int print_unsigned(va_list list)
  * Return: number of characters printed
  * Description: function that prints an octal
  */
-int print_octal(va_list list)
+int print_octal(va_list list, flags_t flags)
 {
+	(void)flags;
 	unsigned int num = va_arg(list, unsigned int);
 	int count = 0;
 	int result[32];
@@ -70,8 +81,9 @@ int print_octal(va_list list)
  * Return: number of characters printed
  * Description: function that prints a hexadecimal
  */
-int print_hex(va_list list)
+int print_hex(va_list list, flags_t flags)
 {
+	(void)flags;
 	unsigned int num = va_arg(list, unsigned int);
 	int count = 0;
 	int result[32];
@@ -106,8 +118,9 @@ int print_hex(va_list list)
  * @list: list of arguments
  * Return: number of characters printed
  */
-int print_HEX(va_list list)
+int print_HEX(va_list list, flags_t flags)
 {
+	(void)flags;
 	unsigned int num = va_arg(list, unsigned int);
 	int count = 0;
 	int result[32];
@@ -142,8 +155,9 @@ int print_HEX(va_list list)
  * @list: list of arguments
  * Return: number of characters printed
  */
-int print_Sstring(va_list list)
+int print_Sstring(va_list list, flags_t flags)
 {
+	(void)flags;
 	char *str = va_arg(list, char *);
 	int count = 0;
 	int i = 0;

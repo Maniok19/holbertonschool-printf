@@ -32,12 +32,26 @@ int _printf(const char *format, ...)
 	{
 		if (format[i] == '%')
 		{
+			i++;
+			flags.plus = 0;
+			flags.space = 0;
+			flags.hash = 0;
+			while (format[i] == ' ' || format[i] == '+' || format[i] == '#')
+			{
+				if (format[i] == ' ')
+					flags.space = 1;
+				if (format[i] == '+')
+					flags.plus = 1;
+				if (format[i] == '#')
+					flags.hash = 1;
+				i++;
+			}
 			j = 0;
 			while (format_list[j].type)
 			{
 				if (format_list[j].type[0] == format[i + 1])
 				{
-					count += format_list[j].f(list);
+					count += format_list[j].f(list, flags);
 					i++;
 					break;
 				}

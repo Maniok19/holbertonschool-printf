@@ -11,7 +11,7 @@
 typedef struct print
 {
 	char *type;
-	int (*f)(va_list);
+	int (*f)(va_list, flags_t);
 } print_t;
 /**
  * struct flags - struct for flags

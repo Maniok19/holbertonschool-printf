@@ -7,8 +7,9 @@
  * Return: number of characters printed
  * Description: function that prints a character
  */
-int print_char(va_list list)
+int print_char(va_list list, flags_t flags)
 {
+	(void)flags;
 	_putchar(va_arg(list, int));
 	return (1);
 }
@@ -18,8 +19,9 @@ int print_char(va_list list)
  * Return: number of characters printed
  * Description: function that prints a string
  */
-int print_string(va_list list)
+int print_string(va_list list, flags_t flags)
 {
+	(void)flags;
 	int i;
 	char *str = va_arg(list, char *);
 
@@ -35,9 +37,10 @@ int print_string(va_list list)
  * Return: number of characters printed
  * Description: function that prints a percent sign
  */
-int print_percent(va_list list)
+int print_percent(va_list list, flags_t flags)
 {
 	(void)list;
+	(void)flags;
 	_putchar('%');
 	return (1);
 }
@@ -47,7 +50,7 @@ int print_percent(va_list list)
  * Return: number of characters printed
  * Description: function that prints an integer
  */
-int print_int(va_list list)
+int print_int(va_list list, flags_t flags)
 {
 	int digit = va_arg(list, int);
 	int min = -2147483648;
@@ -55,6 +58,16 @@ int print_int(va_list list)
 	int temp = 0;
 	int power = 1;
 
+	if (digit >= 0 && flags.plus == 1)
+	{
+		_putchar('+');
+		count++;
+	}
+	if (digit >= 0 && flags.space == 1 && flags.plus == 0)
+	{
+		_putchar(' ');
+		count++;
+	}
 	if (list == NULL)
 		return (0);
 	if (digit == min)
@@ -91,8 +104,9 @@ int print_int(va_list list)
  * Return: number of characters printed
  * Description: function that prints a binary
  */
-int print_binary(va_list list)
+int print_binary(va_list list, flags_t flags)
 {
+	(void)flags;
 	unsigned int num = va_arg(list, unsigned int);
 	int count = 0;
 	int result[32];
