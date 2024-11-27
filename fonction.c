@@ -2,16 +2,16 @@
 #include <stdarg.h>
 #include <stdio.h>
 /**
- * print_char - function that prints a character
- * @list: list of arguments
- * @flags: flags + ' ' '#'
- * Return: number of characters printed
- * Description: function that prints a character
- */
+  * print_char - function that prints a character
+  * @list: list of arguments
+  * @flags: flags + ' ' '#'
+  * Return: number of characters printed
+  * Description: function that prints a character
+  */
 int print_char(va_list list, flags_t flags)
 {
 	(void)flags;
-	_putchar(va_arg(list, int));
+	_putchar(va_arg(list, int)); /* Affiche le caractère */
 	return (1);
 }
 /**
@@ -23,15 +23,14 @@ int print_char(va_list list, flags_t flags)
  */
 int print_string(va_list list, flags_t flags)
 {
-
 	int i;
 	char *str = va_arg(list, char *);
 
 	(void)flags;
 	if (str == NULL)
-		str = "(null)";
+		str = "(null)"; /* Gère le cas d'une chaîne NULL */
 	for (i = 0; str[i]; i++)
-		_putchar(str[i]);
+		_putchar(str[i]); /* Affiche chaque caractère de la chaîne */
 	return (i);
 }
 /**
@@ -45,7 +44,7 @@ int print_percent(va_list list, flags_t flags)
 {
 	(void)list;
 	(void)flags;
-	_putchar('%');
+	_putchar('%'); /* Affiche le signe pourcentage */
 	return (1);
 }
 /**
@@ -60,12 +59,12 @@ int print_number(int n)
 	if (n < 0)
 	{
 		_putchar('-');
-		n = -n;
+		n = -n; /* Gère les nombres négatifs */
 		count++;
 	}
 	if (n / 10)
-		count += print_number(n / 10);
-	_putchar(n % 10 + '0');
+		count += print_number(n / 10); /* Appel récursif pour les chiffres */
+	_putchar(n % 10 + '0'); /* Affiche le dernier chiffre */
 	return (count + 1);
 }
 /**
@@ -82,23 +81,21 @@ int print_int(va_list list, flags_t flags)
 
 	if (digit >= 0 && flags.plus == 1)
 	{
-		_putchar('+');
+		_putchar('+'); /* Ajoute un signe plus si demandé */
 		count++;
 	}
 	if (digit >= 0 && flags.space == 1)
 	{
-		_putchar(' ');
+		_putchar(' '); /* Ajoute un espace si demandé */
 		count++;
 	}
 	if (digit == -2147483648)
 	{
 		_putchar('-');
 		_putchar('2');
-		digit = 147483648;
+		digit = 147483648; /* Gère le cas particulier de INT_MIN */
 		count += 2;
 	}
-	{
-		count += print_number(digit);
-	}
+	count += print_number(digit); /* Affiche le nombre */
 	return (count);
 }
