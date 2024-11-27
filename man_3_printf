@@ -10,9 +10,27 @@ The _printf function allows formatted text to be displayed on the screen. It use
 .br
 The overall syntax of a conversion is:
 .br
-	%conversion.
+	%[flags][width][.precision][length]specifier
 .TP
-The available conversion specifiers are: c, s, d, i, %.
+The available conversion specifiers are: c, s, d, i, %, b, u, o, x, X, S, p.
+.SH FLAGS
+The following flags are supported:
+.br
++	Forces to precede the result with a plus or minus sign (+ or -) even for positive numbers.
+.br
+(space)	If no sign is going to be written, a blank space is inserted before the value.
+.br
+#	Used with o, x or X specifiers the value is preceded with 0, 0x or 0X respectively for values different than zero.
+.SH WIDTH
+Minimum number of characters to be printed. If the value to be printed is shorter than this number, the result is padded with blank spaces. The value is not truncated even if the result is larger.
+.SH PRECISION
+Specifies the precision of the number: for integer specifiers (d, i, o, u, x, X), it specifies the minimum number of digits to be written. If the value to be written is shorter than this number, the result is padded with leading zeros.
+.SH LENGTH
+Specifies the length of the data type. The following length modifiers are supported:
+.br
+l	Specifies that the argument is a long int or unsigned long int.
+.br
+h	Specifies that the argument is a short int or unsigned short int.
 .SH CONVERSION SPECIFIERS
 d, i	The int argument is converted to signed decimal notation.
 .br
@@ -21,6 +39,20 @@ c	The int argument is converted to a char, and the resulting char is written.
 s	Characters from the array are written up to (but not included) a terminating null byte ('\0').
 .br
 %	A '%' is written. No argument is converted. The complete conversion specification is '%%'.
+.br
+b	The unsigned int argument is converted to binary notation.
+.br
+u	The unsigned int argument is converted to unsigned decimal notation.
+.br
+o	The unsigned int argument is converted to unsigned octal notation.
+.br
+x	The unsigned int argument is converted to unsigned hexadecimal notation, using the letters "abcdef".
+.br
+X	The unsigned int argument is converted to unsigned hexadecimal notation, using the letters "ABCDEF".
+.br
+S	The string argument is printed. Non printable characters (ASCII value < 32 or >= 127) are printed this way: \x, followed by the ASCII code value in hexadecimal (upper case - always 2 characters).
+.br
+p	The void * pointer argument is printed in hexadecimal.
 .SH RETURN VALUE
 The _printf function returns the total number of characters written (not including the final null character) if the operation was successful. If there is an error, it returns -1.
 .SH STANDARDS
