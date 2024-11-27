@@ -1,12 +1,13 @@
 #include "main.h"
 #include <stdarg.h>
 #include <stdio.h>
+
 /**
- * print_address - prints the adress of a variable
+ * print_address - prints the address of a variable
  * @list: list of arguments
  * @flags: flags + ' ' '#'
  * Return: number of characters printed
- * Description: prints the adress of a variable
+ * Description: prints the address of a variable
  */
 int print_address(va_list list, flags_t flags)
 {
@@ -19,8 +20,12 @@ int print_address(va_list list, flags_t flags)
 	num = va_arg(list, unsigned long); /* Récupérer l'argument */
 	if (num == 0) /* Si le nombre est 0 */
 	{
-		_putchar('0'); /* Afficher 0 */
-		count++; /* Incrémenter le compteur */
+		_putchar('('); /* Afficher '(' */
+		_putchar('n'); /* Afficher 'n' */
+		_putchar('i'); /* Afficher 'i' */
+		_putchar('l'); /* Afficher 'l' */
+		_putchar(')'); /* Afficher ')' */
+		count += 5; /* Incrémenter le compteur de 5 */
 	}
 	else
 	{
@@ -44,6 +49,7 @@ int print_address(va_list list, flags_t flags)
 	}
 	return (count); /* Retourner le compteur */
 }
+
 /**
  * print_binary - function that prints a binary
  * @list: list of arguments
@@ -59,7 +65,7 @@ int print_binary(va_list list, flags_t flags)
 	int i = 0; /* Initialisation de l'index */
 
 	(void)flags; /* Ignorer les flags */
-	if (num <= 0) /* Si le nombre est inférieur ou égal à 0 */
+	if (num == 0) /* Si le nombre est égal à 0 */
 	{
 		_putchar(num + '0'); /* Afficher le chiffre */
 		count++; /* Incrémenter le compteur */
