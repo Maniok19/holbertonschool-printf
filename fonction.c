@@ -51,6 +51,7 @@ int print_percent(va_list list, flags_t flags)
 int print_number(int n)
 {
 	int count = 0;
+
 	if (n < 0)
 	{
 		_putchar('-');

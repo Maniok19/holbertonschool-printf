@@ -2,13 +2,13 @@
 #include <stdarg.h>
 #include <stdio.h>
 /**
- * print_adress - prints the adress of a variable
+ * print_address - prints the adress of a variable
  * @list: list of arguments
  * @flags: flags + ' ' '#'
  * Return: number of characters printed
  * Description: prints the adress of a variable
  */
-int print_adress(va_list list, flags_t flags)
+int print_address(va_list list, flags_t flags)
 {
 	unsigned long num;
 	int count = 0;

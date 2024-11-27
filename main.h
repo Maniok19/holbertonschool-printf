@@ -41,6 +41,6 @@ int print_hex(va_list list, flags_t);
 int print_HEX(va_list list, flags_t);
 void _flush_buffer(void);
 int print_Sstring(va_list list, flags_t);
-int print_adress(va_list list, flags_t);
+int print_address(va_list list, flags_t);
 
 #endif
