@@ -165,7 +165,6 @@ int print_HEX(va_list list, flags_t flags)
  */
 int print_Sstring(va_list list, flags_t flags)
 {
-
 	char *str = va_arg(list, char *);
 	int count = 0;
 	int i = 0;
@@ -182,7 +181,15 @@ int print_Sstring(va_list list, flags_t flags)
 			_putchar('\\');
 			_putchar('x');
 			count += 2;
-			count += print_HEX(list, flags);
+			if ((str[i] / 16) < 10)
+				_putchar((str[i] / 16) + '0');
+			else
+				_putchar((str[i] / 16) - 10 + 'A');
+			if ((str[i] % 16) < 10)
+				_putchar((str[i] % 16) + '0');
+			else
+				_putchar((str[i] % 16) - 10 + 'A');
+			count += 2;
 		}
 		else
 		{
