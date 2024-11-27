@@ -96,6 +96,11 @@ int _printf(const char *format, ...)
 		if (format[i] == '%')
 		{
 			i++;
+			if (format[i] == '\0')
+			{
+				va_end(list);
+				return (-1);
+			}
 			init_flags(&flags);
 			set_flags(format, &i, &flags);
 			count += handle_format(format, list, flags, &i);
