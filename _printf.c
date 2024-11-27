@@ -27,6 +27,8 @@ int _printf(const char *format, ...)
 		{NULL, NULL}
 	};
 
+	if (format == NULL)
+	return (-1);
 	va_start(list, format);
 	while (format && format[i])
 	{
@@ -49,21 +51,19 @@ int _printf(const char *format, ...)
 			j = 0;
 			while (format_list[j].type)
 			{
-				if (format_list[j].type[0] == format[i + 1])
+				if (format_list[j].type[0] == format[i])
 				{
 					count += format_list[j].f(list, flags);
-					i++;
 					break;
 				}
 				j++;
 			}
 			if (format_list[j].type == NULL)
-            {
-                _putchar('%');
-                _putchar(format[i + 1]);
-                count += 2;
-                i++;
-            }
+			{
+				_putchar('%');
+				_putchar(format[i]);
+				count += 2;
+			}
 		}
 		else
 		{

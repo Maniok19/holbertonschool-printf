@@ -4,6 +4,7 @@
 /**
  * print_unsigned - function that prints an unsigned integer
  * @list: list of arguments
+ * @flags: flags + ' ' '#'
  * Return: number of characters printed
  */
 int print_unsigned(va_list list, flags_t flags)
@@ -12,19 +13,8 @@ int print_unsigned(va_list list, flags_t flags)
 	unsigned int temp = 0;
 	unsigned int power = 1;
 	int count = 0;
-		if (digit >= 0 && flags.plus == 1)
-	{
-		_putchar('+');
-		count++;
-	}
-	if (digit >= 0 && flags.space == 1 && flags.plus == 0)
-	{
-		_putchar(' ');
-		count++;
-	}
 
-	if (list == NULL)
-		return (0);
+	(void)flags;
 	temp = digit;
 	while (temp / 10)
 	{
@@ -43,20 +33,25 @@ int print_unsigned(va_list list, flags_t flags)
 /**
  * print_octal - function that prints an octal
  * @list: list of arguments
+ * @flags: flags + ' ' '#'
  * Return: number of characters printed
  * Description: function that prints an octal
  */
 int print_octal(va_list list, flags_t flags)
 {
-	(void)flags;
 	unsigned int num = va_arg(list, unsigned int);
 	int count = 0;
 	int result[32];
 	int i = 0;
 
-	if (num <= 0)
+	if (flags.hash && num != 0)
 	{
-		_putchar(num + '0');
+		_putchar('0');
+		count++;
+	}
+	if (num == 0)
+	{
+		_putchar('0');
 		count++;
 	}
 	else
@@ -78,28 +73,34 @@ int print_octal(va_list list, flags_t flags)
 /**
  * print_hex - function that prints a hexadecimal
  * @list: list of arguments
+ * @flags: flags + ' ' '#'
  * Return: number of characters printed
  * Description: function that prints a hexadecimal
  */
 int print_hex(va_list list, flags_t flags)
 {
-	(void)flags;
-	unsigned int num = va_arg(list, unsigned int);
+	unsigned int digit = va_arg(list, unsigned int);
 	int count = 0;
 	int result[32];
 	int i = 0;
 
-	if (num <= 0)
+	if (flags.hash && digit != 0)
 	{
-		_putchar(num + '0');
+		_putchar('0');
+		_putchar('x');
+		count += 2;
+	}
+	if (digit == 0)
+	{
+		_putchar('0');
 		count++;
 	}
 	else
 	{
-		while (num > 0)
+		while (digit > 0)
 		{
-			result[i] = (num % 16);
-			num = num / 16;
+			result[i] = (digit % 16);
+			digit = digit / 16;
 			i++;
 		}
 		for (i = i - 1; i >= 0; i--)
@@ -116,19 +117,25 @@ int print_hex(va_list list, flags_t flags)
 /**
  * print_HEX - function that prints a hexadecimal
  * @list: list of arguments
+ * @flags: flags + ' ' '#'
  * Return: number of characters printed
  */
 int print_HEX(va_list list, flags_t flags)
 {
-	(void)flags;
 	unsigned int num = va_arg(list, unsigned int);
 	int count = 0;
 	int result[32];
 	int i = 0;
 
-	if (num <= 0)
+	if (flags.hash && num != 0)
 	{
-		_putchar(num + '0');
+		_putchar('0');
+		_putchar('X');
+		count += 2;
+	}
+	if (num == 0)
+	{
+		_putchar('0');
 		count++;
 	}
 	else
@@ -153,15 +160,17 @@ int print_HEX(va_list list, flags_t flags)
 /**
  * print_Sstring - function that prints a string
  * @list: list of arguments
+ * @flags: flags + ' ' '#'
  * Return: number of characters printed
  */
 int print_Sstring(va_list list, flags_t flags)
 {
-	(void)flags;
+
 	char *str = va_arg(list, char *);
 	int count = 0;
 	int i = 0;
 
+	(void)flags;
 	if (str == NULL)
 	{
 		str = "(null)";
@@ -173,7 +182,7 @@ int print_Sstring(va_list list, flags_t flags)
 			_putchar('\\');
 			_putchar('x');
 			count += 2;
-			count += print_HEX(list);
+			count += print_HEX(list, flags);
 		}
 		else
 		{
