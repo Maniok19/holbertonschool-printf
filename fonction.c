@@ -48,6 +48,11 @@ int print_percent(va_list list, flags_t flags)
 	_putchar('%');
 	return (1);
 }
+/**
+ * print_number - function that prints a number
+ * @n: number to print
+ * Return: number of characters printed
+ */
 int print_number(int n)
 {
 	int count = 0;
