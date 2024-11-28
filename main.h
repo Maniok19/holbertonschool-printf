@@ -44,5 +44,5 @@ int print_Sstring(va_list list, flags_t);
 int print_address(va_list list, flags_t);
 int print_rev(va_list list, flags_t flags);
 int print_rot13(va_list list, flags_t flags);
-void modifier(const char *format ,int *i, char *length);
+void handle_length_modifier(const char *format, int *i, char *length);
 #endif

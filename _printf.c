@@ -31,6 +31,20 @@ void set_flags(const char *format, int *i, flags_t *flags)
 	}
 }
 /**
+ * handle_length_modifier - handle length modifiers
+ * @format: format string
+ * @i: pointer to the index
+ * @length: pointer to the length modifier
+ */
+void handle_length_modifier(const char *format, int *i, char *length)
+{
+	if (format[*i] == 'l' || format[*i] == 'h')
+	{
+		*length = format[*i];
+		(*i)++;
+	}
+}
+/**
  * handle_format - handle format
  * @format: format string
  * @list: arguments list
@@ -41,6 +55,7 @@ void set_flags(const char *format, int *i, flags_t *flags)
 int handle_format(const char *format, va_list list, flags_t flags, int *i)
 {
 	int j = 0, count = 0;
+	char length = '\0';
 	print_t format_list[] = {
 		{"c", print_char},
 		{"s", print_string},
@@ -57,6 +72,7 @@ int handle_format(const char *format, va_list list, flags_t flags, int *i)
 		{NULL, NULL}
 	};
 
+	handle_length_modifier(format, i, &length);
 	while (format_list[j].type)
 	{
 		if (format_list[j].type[0] == format[*i])
