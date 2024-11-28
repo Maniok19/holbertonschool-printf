@@ -86,3 +86,71 @@ int print_binary(va_list list, flags_t flags)
 	}
 	return (count); /* Retourner le compteur */
 }
+/**
+ * print_rev - function that prints a string in reverse
+ * @list: list of arguments
+ * @flags: flags + ' ' '#'
+ * Return: number of characters printed
+ */
+int print_rev(va_list list, flags_t flags)
+{
+	(void)flags;
+	char *str = va_arg(list, char *);
+	int i = 0;
+	int count = 0;
+
+	if (str == NULL)
+		str = "(null)";
+	while (str[i])
+	{
+		i++;
+	}
+	i--;
+	while (i >= 0)
+	{
+		_putchar(str[i]);
+		i--;
+		count++;
+	}
+	return (count);
+}
+/**
+ * print_rot13 - function that prints a string in rot13
+ * @list: list of arguments
+ * @flags: flags + ' ' '#'
+ * Return: number of characters printed
+ */
+int print_rot13(va_list list, flags_t flags)
+{
+	(void)flags;
+	char *str = va_arg(list, char *);
+	int i = 0;
+	int j;
+	int count = 0;
+	char alpha[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+	char rot13[] = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
+
+	if (str == NULL)
+		str = "(null)";
+	while (str[i])
+	{
+		j = 0;
+		while (alpha[j])
+		{
+			if (str[i] == alpha[j])
+			{
+				_putchar(rot13[j]);
+				count++;
+				break;
+			}
+			j++;
+		}
+		if (!alpha[j])
+		{
+			_putchar(str[i]);
+			count++;
+		}
+		i++;
+	}
+	return (count);
+}
