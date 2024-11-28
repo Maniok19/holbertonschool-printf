@@ -13,11 +13,15 @@ int main(void)
 	int len2;
 	unsigned int ui;
 	void *addr;
+	long int li;
+    short int si;
 
 	len = _printf("Let's try to printf a simple sentence.\n");
 	len2 = printf("Let's try to printf a simple sentence.\n");
 	ui = (unsigned int)INT_MAX + 1024;
 	addr = (void *)0x7ffe637541f0;
+	li = (long int)INT_MAX + 1024;
+    si = (short int)32767;
 	_printf("Length:[%d, %i]\n", len, len);
 	printf("Length:[%d, %i]\n", len2, len2);
 	_printf("Negative:[%d]\n", -762534);
@@ -37,14 +41,21 @@ int main(void)
 	len2 = printf("Address:[%p]\n", addr);
 	_printf("Len:[%d]\n", len);
 	printf("Len:[%d]\n", len2);
-	_printf("Unknown:[%!]\n");
-	printf("Unknown:[%!]\n");
+	_printf("Unknown:[%]\n");
 	_printf("%i\n", +10);
 	_printf("%i\n", 10);
 	printf("%i\n", +10);
 	printf("%i\n", 10);
-	printf("%r\n", "hello");
 	_printf("%r\n", "hello");
-	_printf("%R", "salut");
+	_printf("%R\n", "salut");
+	len = _printf("Long unsigned:[%lu]\n", li);
+    len2 = printf("Long unsigned:[%lu]\n", li);
+	_printf("Len:[%d]\n", len);
+	printf("Len:[%d]\n", len2);
+    len = _printf("Short unsigned:[%hu]\n", si);
+    len2 = printf("Short unsigned:[%hu]\n", si);
+	_printf("Len:[%d]\n", len);
+	printf("Len:[%d]\n", len2);
+
 	return (0);
 }

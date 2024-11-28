@@ -94,11 +94,11 @@ int print_binary(va_list list, flags_t flags)
  */
 int print_rev(va_list list, flags_t flags)
 {
-	(void)flags;
 	char *str = va_arg(list, char *);
 	int i = 0;
 	int count = 0;
 
+	(void)flags;
 	if (str == NULL)
 		str = "(null)";
 	while (str[i])
@@ -122,14 +122,15 @@ int print_rev(va_list list, flags_t flags)
  */
 int print_rot13(va_list list, flags_t flags)
 {
-	(void)flags;
+
 	char *str = va_arg(list, char *);
 	int i = 0;
 	int j;
 	int count = 0;
 	char alpha[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 	char rot13[] = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
-
+	
+	(void)flags;
 	if (str == NULL)
 		str = "(null)";
 	while (str[i])
