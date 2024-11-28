@@ -37,12 +37,8 @@ int main(void)
 	len2 = printf("Address:[%p]\n", addr);
 	_printf("Len:[%d]\n", len);
 	printf("Len:[%d]\n", len2);
-	len = _printf("Percent:[%%]\n");
-	len2 = printf("Percent:[%%]\n");
-	_printf("Len:[%d]\n", len);
-	printf("Len:[%d]\n", len2);
-	_printf("Unknown:[%r]\n");
-	printf("Unknown:[%r]\n");
+	_printf("Unknown:[%!]\n");
+	printf("Unknown:[%!]\n");
 	_printf("%i\n", +10);
 	_printf("%i\n", 10);
 	printf("%i\n", +10);
@@ -50,9 +46,5 @@ int main(void)
 	printf("%r\n", "hello");
 	_printf("%r\n", "hello");
 	_printf("%R", "salut");
-	short s =12345;
-	long l = 1234567890L;
-	printf("%hd", s);
-	printf("Long: %ld\n", l);
 	return (0);
 }

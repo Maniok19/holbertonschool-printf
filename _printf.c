@@ -30,14 +30,6 @@ void set_flags(const char *format, int *i, flags_t *flags)
 		(*i)++;               /* Avance à la prochaine position */
 	}
 }
-void modifier(const char *format ,int *i, char *length)
-{
-	if (format[*i] == 'l' || format[*i] == 'h')
-	{
-		*length = format[*i];
-		(*i)++;
-	}
-}
 /**
  * handle_format - handle format
  * @format: format string
@@ -49,7 +41,6 @@ void modifier(const char *format ,int *i, char *length)
 int handle_format(const char *format, va_list list, flags_t flags, int *i)
 {
 	int j = 0, count = 0;
-	char length = '\0';
 	print_t format_list[] = {
 		{"c", print_char},
 		{"s", print_string},
@@ -63,21 +54,13 @@ int handle_format(const char *format, va_list list, flags_t flags, int *i)
 		{"X", print_HEX},
 		{"S", print_Sstring},
 		{"p", print_address},
-		{"r", print_rev},
-		{"R", print_rot13},
 		{NULL, NULL}
 	};
 
-	modifier(format, i, &length);
 	while (format_list[j].type)
 	{
 		if (format_list[j].type[0] == format[*i])
 		{
-			if (length == 'l')
-				count += format_list[j].f(list, flags);
-			else if (length == 'h')
-				count += format_list[j].f(list, flags);
-			else
 			count += format_list[j].f(list, flags); /* Appelle la fonction */
 			break;
 		}
@@ -107,7 +90,6 @@ int _printf(const char *format, ...)
 		return (-1);          /* Retourne -1 si format est NULL */
 
 	va_start(list, format);   /* Initialise la liste d'arguments variables */
-
 	while (format && format[i])
 	{
 		if (format[i] == '%')
@@ -121,7 +103,7 @@ int _printf(const char *format, ...)
 			init_flags(&flags);           /* Initialise les drapeaux */
 			set_flags(format, &i, &flags);/* Définit les drapeaux */
 			count += handle_format(format, list, flags, &i); /* Gère le format */
-			init_flags(&flags);
+			init_flags(&flags);           /* Réinitialise les drapeaux */
 		}
 		else
 		{
@@ -133,6 +115,5 @@ int _printf(const char *format, ...)
 
 	va_end(list);               /* Nettoie la liste d'arguments variables */
 	_flush_buffer();            /* Vide le tampon */
-
 	return (count);             /* Retourne le nombre total de caractères */
 }
