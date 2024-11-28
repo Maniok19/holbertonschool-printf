@@ -134,7 +134,13 @@ int print_rot13(va_list list, flags_t flags)
 		{
 			_putchar(rot13[j]);
 			count++;
+			break;
 		}
+		}
+		if (alpha[j] == '\0')
+		{
+			_putchar(str[i]);
+			count++;
 		}
 	}
 	return (count);
