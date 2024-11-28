@@ -86,6 +86,12 @@ int print_binary(va_list list, flags_t flags)
 	}
 	return (count); /* Retourner le compteur */
 }
+/**
+ * print_rev - function that prints a string in reverse
+ * @list: list of arguments
+ * @flags: flags + ' ' '#'
+ * Return: number of characters printed
+ */
 int print_rev(va_list list, flags_t flags)
 {
 	char *str = va_arg(list, char *);
@@ -103,6 +109,12 @@ int print_rev(va_list list, flags_t flags)
 	}
 	return (count);
 }
+/**
+ * print_rot13 - function that prints a string in rot13
+ * @list: list of arguments
+ * @flags: flags + ' ' '#'
+ * Return: number of characters printed
+ */
 int print_rot13(va_list list, flags_t flags)
 {
 	char *str = va_arg(list, char *);
@@ -116,7 +128,7 @@ int print_rot13(va_list list, flags_t flags)
 	for (i = 0; str[i] != '\0'; i++)
 	{
 		j = 0;
-		for (j=0; alpha[j] != '\0'; j++)
+		for (j = 0; alpha[j] != '\0'; j++)
 		{
 		if (str[i] == alpha[j])
 		{
