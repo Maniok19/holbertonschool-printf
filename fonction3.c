@@ -129,7 +129,7 @@ int print_rot13(va_list list, flags_t flags)
 	int count = 0;
 	char alpha[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 	char rot13[] = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
-	
+
 	(void)flags;
 	if (str == NULL)
 		str = "(null)";
