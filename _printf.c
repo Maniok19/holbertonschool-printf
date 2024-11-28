@@ -54,6 +54,7 @@ int handle_format(const char *format, va_list list, flags_t flags, int *i)
 		{"X", print_HEX},
 		{"S", print_Sstring},
 		{"p", print_address},
+		{"r", print_rev},
 		{NULL, NULL}
 	};
 

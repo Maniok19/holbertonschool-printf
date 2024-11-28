@@ -42,5 +42,5 @@ int print_HEX(va_list list, flags_t);
 void _flush_buffer(void);
 int print_Sstring(va_list list, flags_t);
 int print_address(va_list list, flags_t);
-
+int print_rev(va_list list, flags_t flags);
 #endif

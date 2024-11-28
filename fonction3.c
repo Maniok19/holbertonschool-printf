@@ -86,3 +86,21 @@ int print_binary(va_list list, flags_t flags)
 	}
 	return (count); /* Retourner le compteur */
 }
+int print_rev(va_list list, flags_t flags)
+{
+	char *str = va_arg(list, char *);
+	int i, count = 0;
+
+	(void)flags;
+	if (str == NULL)
+		str = "(null)";
+	for (i = 0; str[i] != '\0'; i++)
+		;
+	for (i = i - 1; i >= 0; i--)
+	{
+		_putchar(str[i]);
+		count++;
+	}
+	return (count);
+}
+	

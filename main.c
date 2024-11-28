@@ -47,5 +47,7 @@ int main(void)
 	_printf("%i\n", 10);
 	printf("%i\n", +10);
 	printf("%i\n", 10);
+	printf("%r\n", "hello");
+	_printf("%r\n", "hello");
 	return (0);
 }
