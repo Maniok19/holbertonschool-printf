@@ -50,5 +50,9 @@ int main(void)
 	printf("%r\n", "hello");
 	_printf("%r\n", "hello");
 	_printf("%R", "salut");
+	short s =12345;
+	long l = 1234567890L;
+	printf("%hd", s);
+	printf("Long: %ld\n", l);
 	return (0);
 }

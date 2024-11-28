@@ -30,6 +30,14 @@ void set_flags(const char *format, int *i, flags_t *flags)
 		(*i)++;               /* Avance à la prochaine position */
 	}
 }
+void modifier(const char *format ,int *i, char *length)
+{
+	if (format[*i] == 'l' || format[*i] == 'h')
+	{
+		*length = format[*i];
+		(*i)++;
+	}
+}
 /**
  * handle_format - handle format
  * @format: format string
@@ -41,6 +49,7 @@ void set_flags(const char *format, int *i, flags_t *flags)
 int handle_format(const char *format, va_list list, flags_t flags, int *i)
 {
 	int j = 0, count = 0;
+	char length = '\0';
 	print_t format_list[] = {
 		{"c", print_char},
 		{"s", print_string},
@@ -59,10 +68,16 @@ int handle_format(const char *format, va_list list, flags_t flags, int *i)
 		{NULL, NULL}
 	};
 
+	modifier(format, i, &length);
 	while (format_list[j].type)
 	{
 		if (format_list[j].type[0] == format[*i])
 		{
+			if (length == 'l')
+				count += format_list[j].f(list, flags);
+			else if (length == 'h')
+				count += format_list[j].f(list, flags);
+			else
 			count += format_list[j].f(list, flags); /* Appelle la fonction */
 			break;
 		}
@@ -106,6 +121,7 @@ int _printf(const char *format, ...)
 			init_flags(&flags);           /* Initialise les drapeaux */
 			set_flags(format, &i, &flags);/* Définit les drapeaux */
 			count += handle_format(format, list, flags, &i); /* Gère le format */
+			init_flags(&flags);
 		}
 		else
 		{
