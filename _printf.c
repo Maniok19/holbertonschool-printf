@@ -55,6 +55,7 @@ int handle_format(const char *format, va_list list, flags_t flags, int *i)
 		{"S", print_Sstring},
 		{"p", print_address},
 		{"r", print_rev},
+		{"R", print_rot13},
 		{NULL, NULL}
 	};
 

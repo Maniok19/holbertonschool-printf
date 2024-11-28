@@ -49,5 +49,6 @@ int main(void)
 	printf("%i\n", 10);
 	printf("%r\n", "hello");
 	_printf("%r\n", "hello");
+	_printf("%R", "salut");
 	return (0);
 }

@@ -103,4 +103,27 @@ int print_rev(va_list list, flags_t flags)
 	}
 	return (count);
 }
-	
+int print_rot13(va_list list, flags_t flags)
+{
+	char *str = va_arg(list, char *);
+	int i, j, count = 0;
+	char *alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+	char *rot13 = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
+
+	(void)flags;
+	if (str == NULL)
+		str = "(null)";
+	for (i = 0; str[i] != '\0'; i++)
+	{
+		j = 0;
+		for (j=0; alpha[j] != '\0'; j++)
+		{
+		if (str[i] == alpha[j])
+		{
+			_putchar(rot13[j]);
+			count++;
+		}
+		}
+	}
+	return (count);
+}

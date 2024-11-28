@@ -43,4 +43,5 @@ void _flush_buffer(void);
 int print_Sstring(va_list list, flags_t);
 int print_address(va_list list, flags_t);
 int print_rev(va_list list, flags_t flags);
+int print_rot13(va_list list, flags_t flags);
 #endif
