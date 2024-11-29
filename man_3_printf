@@ -21,10 +21,6 @@ The following flags are supported:
 (space)	If no sign is going to be written, a blank space is inserted before the value.
 .br
 #	Used with o, x or X specifiers the value is preceded with 0, 0x or 0X respectively for values different than zero.
-.SH WIDTH
-Minimum number of characters to be printed. If the value to be printed is shorter than this number, the result is padded with blank spaces. The value is not truncated even if the result is larger.
-.SH PRECISION
-Specifies the precision of the number: for integer specifiers (d, i, o, u, x, X), it specifies the minimum number of digits to be written. If the value to be written is shorter than this number, the result is padded with leading zeros.
 .SH LENGTH
 Specifies the length of the data type. The following length modifiers are supported:
 .br
@@ -55,15 +51,12 @@ S	The string argument is printed. Non printable characters (ASCII value < 32 or 
 p	The void * pointer argument is printed in hexadecimal.
 .SH RETURN VALUE
 The _printf function returns the total number of characters written (not including the final null character) if the operation was successful. If there is an error, it returns -1.
-.SH STANDARDS
-_printf()
-	C89, POSIX.1-2001.
 .SH BUGS
-Flag characters, field width, precision and length modifier are not taken into account.
+Field width and precision are not taken into account.
 .SH EXAMPLES
 _printf("My name is %s and i'm %d years old.\n", "Warren", 35);
 .br
-// Displays "My name is Marc and i'm 35 years old." followed by a newline.
+// Displays "My name is Warren and i'm 35 years old." followed by a newline.
 .TP
 _printf("That string is empty:%s, it's length is: %i.\n", "", 0);
 .br
