@@ -1,4 +1,4 @@
-# Project Printf Function Groupe
+# Printf Function
 
 ## Description 
 This project implements a custom `_printf` function that produces output according to a format string. The function mimics the behavior of the standard C library function printf, but with a limited set of conversion specifiers.
@@ -20,6 +20,10 @@ The available conversion specifiers are: c, s, d, i, %, b, u, o, x, X, S, p.
 ## Compilation
 The code should be compiled using the following command:
 ```gcc -Wall -Wextra -Werror -pedantic -std=gnu89 -Wno-format *.c```
+
+## Manual page
+To open the manual, use the following command :
+```man ./man_3_printf```
 
 ## Requirements
 - All files will be compiled on Ubuntu 20.04 LTS using gcc
